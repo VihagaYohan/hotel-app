@@ -1,0 +1,85 @@
+<app-home></app-home>
+
+<h2 class="mt-5 mb-2">Create a new reservation</h2>
+
+<form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+  <div class="row mb-3">
+    <div class="col">
+      <label class="form-label">Check-In Date:</label>
+      <input class="form-control" type="date" formControlName="checkInDate" />
+      <div
+        class="text-danger"
+        *ngIf="
+          reservationForm.get('checkInDate')?.invalid &&
+          reservationForm.get('checkInDate')?.touched
+        "
+      >
+        Check-in date is required
+      </div>
+    </div>
+
+    <div class="col">
+      <label class="form-label">Check-out Date:</label>
+      <input class="form-control" type="date" formControlName="checkOutDate" />
+      <div
+        class="text-danger"
+        *ngIf="
+          reservationForm.get('checkOutDate')?.invalid &&
+          reservationForm.get('checkOutDate')?.touched
+        "
+      >
+        Check-out date is required
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Guest Name:</label>
+    <input class="form-control" type="text" formControlName="guestName" />
+    <div
+      class="text-danger"
+      *ngIf="
+        reservationForm.get('guestName')?.invalid &&
+        reservationForm.get('guestName')?.touched
+      "
+    >
+      Guest name is required
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Guest email:</label>
+    <input class="form-control" type="email" formControlName="guestEmail" />
+    <div
+      class="text-danger"
+      *ngIf="
+        reservationForm.get('guestEmail')?.invalid &&
+        reservationForm.get('guestEmail')?.touched
+      "
+    >
+      Guest email is required
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Room number:</label>
+    <input class="form-control" type="number" formControlName="roomNumber" />
+    <div
+      class="text-danger"
+      *ngIf="
+        reservationForm.get('roomNumber')?.invalid &&
+        reservationForm.get('roomNumber')?.touched
+      "
+    >
+      Room number is required
+    </div>
+  </div>
+
+  <button
+    class="btn btn-success"
+    type="submit"
+    [disabled]="reservationForm.invalid"
+  >
+    Submit
+  </button>
+</form>
